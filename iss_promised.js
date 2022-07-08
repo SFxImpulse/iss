@@ -5,11 +5,14 @@ const fetchMyIP = () => {
 };
 
 const fetchCoordsByIP = (body) => {
+  const ip = JSON.parse(body).ip
   return request(`https://ipwho.is/`);
 };
 
 const fetchISSFlyOverTimes = (body) => {
-  const url = `http://api.open-notify.org/iss-pass.json?lat=45.5016889&lon=-73.567256`;
+  const latitude = JSON.parse(body).latitude;
+  const longitude = JSON.parse(body).longitude;
+  const url = `http://api.open-notify.org/iss-pass.json?lat=${latitude}&lon=${longitude}`;
   return request(url);
 };
 
